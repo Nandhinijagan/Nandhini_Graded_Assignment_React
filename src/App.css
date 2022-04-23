@@ -70,3 +70,19 @@ body {
 .close:hover{
 	color:white;
 }
+.poster-image:hover{
+	opacity: 1 !important;
+}
+.closeButton{
+	width: 80px;
+    float: right;
+    margin-left: 408px;
+    margin-top: 10px;
+	color: black;
+	background-color: white;
+	border: 0px;
+}
+.closeButton:hover{
+	background-color: white;
+	color: black;
+}
