@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
+import { Button, Modal } from "react-bootstrap";
 
 function MovieDetail({ selected, closeDetail}) {
+    const [modal, setModal] = useState(false)
 
+    const handleClose = ()=>{
+        setModal(false)
+    }
+    
     return (
+        <>
         <section className="detail">
             <a className="close"  onClick={closeDetail}>
                 Back to Home
             </a>
             <div className="content">
                 <div style={{ display: 'flex' }}>
-                    <img  style={{marginTop:'5%'}} src={selected.posterurl} alt="" />
+                    <img className="poster-image" style={{marginTop:'5%', opacity:0.75}} src={selected.posterurl} alt="" onClick={()=> setModal(true)}/>
                     <table style={{marginLeft:'2%', marginTop:'5%'}}>
                         <h2 style={{ whiteSpace: 'nowrap' }} >{selected.title}({selected.year})</h2>
                         <tbody>
@@ -52,6 +59,16 @@ function MovieDetail({ selected, closeDetail}) {
 
             </div>
         </section>
+
+        <Modal show={modal} onHide={handleClose}>
+            <Button className="closeButton" onClick={handleClose}>
+               X
+            </Button>
+            <Modal.Body>
+                <img src={selected.posterurl}/>
+            </Modal.Body>
+        </Modal>
+        </>
     );
 }
 
